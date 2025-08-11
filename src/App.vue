@@ -1,14 +1,18 @@
 <template>
-  <h1> Reaction Timer</h1>
-  <button @click="start">Start</button>
+  <div>
+    <h1> Reaction Timer</h1>
+    <button @click="start" :disabled="isPlaying">Start</button>
+    <Block v-if="isPlaying" :delay="delay"/>
+  </div>
+  
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-
+import Block from './components/Block.vue';
 @Options({
   components: {
-  
+  Block
   },
   data(){
     return{
@@ -25,7 +29,9 @@ import { Options, Vue } from 'vue-class-component';
     }
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {start:any ;isPlaying: any;
+  delay: any;
+}
 </script>
 
 <style>
