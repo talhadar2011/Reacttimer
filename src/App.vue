@@ -2,7 +2,8 @@
   <div>
     <h1> Reaction Timer</h1>
     <button @click="start" :disabled="isPlaying">Start</button>
-    <Block v-if="isPlaying" :delay="delay"/>
+    <Block v-if="isPlaying" :delay="delay" @result="getResult"/>
+    <Results v-if="showResult" :score="score"/>
   </div>
   
 </template>
@@ -10,14 +11,18 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import Block from './components/Block.vue';
+import Results from './components/Results.vue';
 @Options({
   components: {
-  Block
+  Block,
+  Results
   },
   data(){
     return{
       isPlaying:false,
-      delay:null
+      delay:null,
+      score:null,
+      showResult:false
     }
   }
   ,
@@ -25,11 +30,20 @@ import Block from './components/Block.vue';
     start(){
       this.delay=2000+Math.random() *3000
       this.isPlaying=true
+      this.showResult=false
+    },
+    getResult(ReactionTime: any){
+      this.score=ReactionTime;
+      console.log(this.score)
+      this.isPlaying=false
+      this.showResult=true
     }
   }
 })
 export default class App extends Vue {start:any ;isPlaying: any;
   delay: any;
+  getResult: any;
+  score:any
 }
 </script>
 

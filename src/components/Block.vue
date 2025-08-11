@@ -1,7 +1,6 @@
 <template>
-  <div class="block" v-if="showBlock">
+  <div class="block" v-if="showBlock" @click="stoptimer">
     click me
-    {{ delay }}
   </div>
 </template>
 
@@ -10,19 +9,33 @@ export default {
  props:["delay"],
  data(){
     return {
-        showBlock:false
+        showBlock:false,
+        Timer:null,
+        ReactionTime:0
     }
  },
  mounted(){
-    console.log("Component Mounted")
     setTimeout(()=>{
         this.showBlock=true
+        this.startTimer()
     },this.delay)
+   
 
  },
- updated(){
-    console.log("Updated")
+ methods:{
+     startTimer(){
+        this.Timer=setInterval(()=>{
+            this.ReactionTime+=10
+        },10)
+    },
+    stoptimer(){
+        clearInterval(this.Timer)
+        this.$emit('result',this.ReactionTime)
+
+        this.showBlock=false
+    }
  }
+
 }
 </script>
 
