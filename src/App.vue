@@ -25,7 +25,6 @@ import Block from './components/Block.vue';
     start(){
       this.delay=2000+Math.random() *3000
       this.isPlaying=true
-      console.log(this.delay)
     }
   }
 })
