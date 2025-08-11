@@ -56,4 +56,18 @@ export default class App extends Vue {start:any ;isPlaying: any;
   color: #444;
   margin-top: 60px;
 }
+button{
+  background-color: #444;
+  color:white;
+  font-size: large;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+button[disabled]{
+opacity: 0.5;
+cursor: not-allowed;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Your Score is: {{ score }}</h1>
+    <h1>Your Score is: {{ score }} ms</h1>
   </div>
 </template>
 
