@@ -1,16 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <h1> Reaction Timer</h1>
+  <button @click="start">Start</button>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import HelloWorld from './components/HelloWorld.vue';
 
 @Options({
   components: {
-    HelloWorld,
+  
   },
+  data(){
+    return{
+      isPlaying:false,
+      delay:null
+    }
+  }
+  ,
+  methods:{
+    start(){
+      this.delay=2000+Math.random() *3000
+      this.isPlaying=true
+      console.log(this.delay)
+    }
+  }
 })
 export default class App extends Vue {}
 </script>
@@ -21,7 +34,7 @@ export default class App extends Vue {}
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #444;
   margin-top: 60px;
 }
 </style>
